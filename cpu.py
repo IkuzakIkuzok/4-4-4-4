@@ -14,15 +14,6 @@ def next(board, next_player):
 	if len(lines3_opp) > 0:
 		return random.choice(lines3_opp)
 
-	lines2 = get_2lines(board, next_player)
-	if len(lines2) > 0:
-		dict2 = {i: 0 for i in range(4**4)}
-		for coordinate in lines2:
-			dict2[coordinate] += 1
-		m2 = max(dict2.values())
-		filtered2 = [k for k, v in dict2.items() if v == m2]
-		return random.choice(filtered2)
-
 	lines2_opp = get_2lines(board, next_player*-1)
 	if len(lines2_opp) > 0:
 		dict2_opp = {i: 0 for i in range(4**4)}
@@ -31,6 +22,15 @@ def next(board, next_player):
 		m2_opp = max(dict2_opp.values())
 		filtered2_opp = [k for k, v in dict2_opp.items() if v == m2_opp]
 		return random.choice(filtered2_opp)
+
+	lines2 = get_2lines(board, next_player)
+	if len(lines2) > 0:
+		dict2 = {i: 0 for i in range(4**4)}
+		for coordinate in lines2:
+			dict2[coordinate] += 1
+		m2 = max(dict2.values())
+		filtered2 = [k for k, v in dict2.items() if v == m2]
+		return random.choice(filtered2)
 
 	empty = []
 	for coordinate in range(4**4):
